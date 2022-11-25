@@ -1,0 +1,16 @@
+import java.net.*;
+import java.io.*;
+class receivedemo
+{
+ public static void main (String a[])throws IOException
+  {
+   DatagramSocket ds=new DatagramSocket(8181);
+   byte d[]=new byte[1024];
+   DatagramPacket dp=new DatagramPacket(d,1024);
+   ds.receieve(dp);
+   String str=new String(dp.getData(),0,dp.getLength());
+   System.out.println(str);
+   ds.close();
+   }
+}
+   
