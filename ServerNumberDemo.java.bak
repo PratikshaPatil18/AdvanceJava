@@ -1,0 +1,28 @@
+import java.net.*;
+import java.io.*;
+class ServerNumberDemo
+{ 
+public static void main(String a[])throws IOException
+ { 
+ int num;
+ ServerSocket ss= new ServerSocket(100);
+ System.out.println("Searching");
+ Socket s= ss.accept();
+ BufferedReader br1=new BufferedReader(new InputStreamReader(s.getInputStream()));
+ num=Integer.parseInt(br1.readLine());
+ OutputStream o = s.getOutputStream();
+ PrintStream ps=new PrintStream(o);
+ System.out.println("Checking...");
+ int i=2;
+ while(num%i!=0)
+ {
+	 i++;
+ }
+ if(i==num)
+ {
+	 ps.print("Given Number is Prime.");
+ }else{
+	 ps.print(" Given Number is Not Prime.");
+  }
+ }
+}

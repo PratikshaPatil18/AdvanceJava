@@ -1,0 +1,22 @@
+import java.net.*;
+import java.io.*;
+class ClientNumberDemo
+{ 
+public static void main(String a[])throws IOException
+ { 
+ Socket s= new Socket("localhost",100);
+ BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+ System.out.print("Enter Number :");
+ int n=Integer.parseInt(br.readLine());
+ OutputStream o = s.getOutputStream();
+ PrintStream ps=new PrintStream(o);
+ ps.print(n);
+ BufferedReader br1=new BufferedReader(new InputStreamReader(s.getInputStream()));
+ int c = br1.read();
+ while(c!=-1)
+  {
+	 System.out.print((char)c);
+	 c=br1.read();
+  }
+ }
+}
